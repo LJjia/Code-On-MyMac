@@ -1,2 +1,3 @@
 # Code-On-MyMac
-Include some code in my Mac
+Mainly contain some code in my Mac
+Just write some code causal
