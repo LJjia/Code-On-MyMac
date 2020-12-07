@@ -57,12 +57,28 @@ class CompressFile(DataFile):
     #     self.path=path
     #     self.compress_type = compress_type
 
-    def uncompress(self):
-        pass
+    def uncompress(self,unzip_path='.'):
+        if self.compress_type=='zip':
+            if unzip_path!='.':
+                if not os.path.isdir(unzip_path):
+                    raise ValueError
+                if os.path.exists(unzip_path):
+                    raise FileExistsError
+            datapack=zipfile.ZipFile(self.path,'r')
+
+            foldername=unzip_path+'/'+os.path.basename(self.path)
+            if foldername[-4:]==".zip":
+                foldername=foldername[:-4]
+            for file in datapack.namelist():
+                # 以下两种都可以 解压可以设置解压地址
+                #datapack.extractall(path=foldername)
+                datapack.extract(member=file,path=foldername)
+            print("解压成功")
 
 
 
 if __name__ == '__main__':
-    folder=DataFile('../data','zip')
-    folder.compress()
-    zipfile=CompressFile('../data','zip')
+    # folder=DataFile('../data','zip')
+    # folder.compress()
+    datapack=CompressFile('../data3.zip','zip')
+    datapack.uncompress()
