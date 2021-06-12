@@ -1,0 +1,6 @@
+	name	age	gender
+Alice	Alice	10	female
+Tony	Tony	12	male
+Bob	Bob	15	male
+Tom	Tome	19	male
+Joy	Joy	9	female
